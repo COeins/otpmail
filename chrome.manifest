@@ -1,0 +1,9 @@
+content		otpmail		chrome/content/
+skin			otpmail		classic/1.0 chrome/skin/
+resource	otpmail		modules/
+
+overlay		chrome://messenger/content/messenger.xul														chrome://otpmail/content/messengeroverlay.xul
+#overlay		chrome://messenger/content/msgHdrViewOverlay.xul										chrome://otpmail/content/msghdrviewoverlay.xul
+overlay		chrome://messenger/content/messengercompose/messengercompose.xul		chrome://otpmail/content/msgcomposeoverlay.xul
+style			chrome://global/content/customizeToolbar.xul												chrome://otpmail/skin/otp.css
+

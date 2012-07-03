@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+
+<!DOCTYPE window [
+<!ENTITY % brandDTD SYSTEM "chrome://global/locale/brand.dtd" >
+%brandDTD;
+]>
+<dialog id="otpOptions" title="OTPmail Options" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+ onload="optionsInitialize()" ondialogaccept="optionsSave();">
+
+	<script type="application/x-javascript" src="chrome://otpmail/content/setupwindow.js"/>
+
+	<tabbox flex="1" id="prefTabs" selectedIndex="0">
+		<tabs id="optionsTabs">
+			<tab id="configTab" label="Configuration"/>
+			<tab id="aboutTab" label="About"/>
+		</tabs>
+
+		<tabpanels flex="1">
+			<vbox id="configBox" flex="1">
+					<description style="font-weight: bold">Path settings</description>
+						<groupbox orient="vertical" flex="1">
+							<label control="otpjar" value="Path to otp.jar:"/>
+							<hbox>
+								<textbox id="otpjar" readonly="true" style="width:300px" />
+								<button label="Browse..." oncommand="selectJarPath();"/>
+							</hbox>
+
+							<label control="keydir" value="Key directory:"/>
+							<hbox>
+								<textbox id="keydir" readonly="true" style="width:300px"/>
+								<button label="Browse..." oncommand="selectKeyPath();"/>
+							</hbox>
+
+							<label control="javaexe" value="Java Executable:"/>
+							<hbox>
+								<textbox id="javaexe" readonly="true" style="width:300px"/>
+								<button label="Browse..." oncommand="selectJavaPath();"/>
+							</hbox>
+						</groupbox>
+					<description style="font-weight: bold">Behavioral options</description>
+						<groupbox orient="vertical" flex="1">
+							<checkbox id="cbcache" label="Cache passphrase for 10 minutes" />
+							<checkbox id="cbsubject" label="Warn about subject line" />
+							<checkbox id="cbhtml" label="Warn about HTML mails" />
+						</groupbox>
+			</vbox>
+			<vbox id="aboutBox" flex="1">
+					<description>About</description>
+					<hbox>
+						<image src='chrome://otpmail/skin/otp_64.png' width='135' height='130'/>
+						<groupbox orient="vertical" flex="1">
+							<label value="OTPmail 0.5.1"/>
+							<label value="One Time Pad based mail encryption"/>
+							<label value="by Christoph Oertl &#169; 2012"/>
+							<label value="Released under the Mozilla Public License 2.0 (MPL)"/>
+						</groupbox>
+					</hbox>
+			</vbox>
+		</tabpanels>
+	</tabbox>
+
+</dialog>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://otpmail/skin/otp.css" type="text/css" ?>
+<overlay id="enigMsgComposeOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="msgcomposeoverlay.js"/>
+
+	<toolbarpalette id="MsgComposeToolbarPalette">
+		<toolbarbutton id="otpEncryptButton" class="toolbarbutton-1" label="OTPmail" type="menu-button" tooltiptext="Encrypt mail with OTP">
+			<menupopup id="otpmaiComposeToolbarMenu">
+				<menuitem label="Encrypt mail" accesskey="e" oncommand="toggleEncryptMode(event);" type="checkbox" autocheck="false" id="buttonOtpEnc" />
+				<menuseparator/>
+				<menuitem label="Generate synchronisation request" accesskey="r" oncommand="menuSyncReq();" />
+				<menuitem label="Generate synchronisation message" accesskey="s" oncommand="menuSyncAck();" />
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+
+	<menubar id="mail-menubar">
+		<menu id="otpmailMainMenu" label="OTPmail" accesskey="o" insertbefore="tasksMenu">
+			<menupopup id="otpmailComposeMenuPopup">
+				<menuitem label="Encrypt mail" accesskey="e" oncommand="toggleEncryptMode(event);" type="checkbox" autocheck="false" id="menuOtpEnc" />
+				<menuseparator/>
+				<menuitem label="Generate synchronisation request" accesskey="r" oncommand="menuSyncReq();" />
+				<menuitem label="Generate synchronisation message" accesskey="s" oncommand="menuSyncAck();" />
+			</menupopup>
+		</menu>
+	</menubar>
+	
+	<statusbar id="status-bar">
+		<hbox id="otpComposeStatus" insertafter="totalMessageCount">
+			<statusbarpanel id="otpEncryptStatus" class="statusbarpanel-iconic" collapsed="true" onclick="toggleEncryptMode(event);"/>
+		</hbox>
+	</statusbar>
+</overlay>

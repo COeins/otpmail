@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<RDF:RDF
+	xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+	xmlns:NC="http://home.netscape.com/NC-rdf#"
+	xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<RDF:Description RDF:about="urn:mozilla:install-manifest"
+		em:id="otpmail@co.eins"
+		em:name="OTPmail for Thunderbird"
+		em:version="0.5.1"
+		em:creator="Christoph Oertl"
+		em:description="One Time Pad based mail encryption"
+		em:iconURL="chrome://otpmail/skin/otp_64.png"
+		em:optionsURL="chrome://otpmail/content/setupwindow.xul"
+		em:aboutURL="chrome://otpmail/content/setupwindow.xul">
+		<em:targetApplication RDF:resource="rdf:#$N5M7+"/>
+	</RDF:Description>
+	<RDF:Description RDF:about="rdf:#$N5M7+"
+	em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+	em:minVersion="8.*"
+	em:maxVersion="14.*" />
+</RDF:RDF>

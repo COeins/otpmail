@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<wizard id="otpExport" title="Export key wizard"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="exportInitialize();"
+	onwizardcancel="exportCancel();">
+
+	<script type="application/x-javascript" src="chrome://otpmail/content/exportwizard.js"/>
+
+	<wizardpage description="">
+		<description>
+			This wizard will help you export an One Time Pad key. Select 'Next' to start...
+		</description>
+	</wizardpage>
+
+	<wizardpage pageid="start" description="Select key" onpageadvanced="return exportVerifyKey();">
+		<description>
+			Please select the key you want to export.
+		</description>
+
+		<listbox id="exportSelectKey" rows="7">
+			<listhead>
+				<listheader label="Key id - alias - key ring"/>
+			</listhead>
+		</listbox>
+
+		<label>Key ring passphrase:</label>
+		<textbox id="exportRingPwd" type="password" value="" />
+	</wizardpage>
+
+	<wizardpage description="Select Target location" onpageadvanced="return exportVerifyTarget();">
+		<description>
+			Please choose the target directory.
+		</description>
+		<hbox>
+			<textbox id="exportDir" readonly="true" style="width:250px"/>
+			<button label="Browse..." oncommand="exportSelectDir();"/>
+		</hbox>
+	</wizardpage>
+
+	<wizardpage description="Select export passphrase" onpageadvanced="return exportVerifyPwd();">
+		<description>
+			Please choose a temporary passphrase. Please give this passphrase to your partner, because it will be needed again to import the key later.
+		</description>
+		<label>Export passphrase:</label>
+		<textbox id="exportPassword1" type="password" value="" />
+		<label>Repeat export passphrase:</label>
+		<textbox id="exportPassword2" type="password" value="" />
+	</wizardpage>
+
+	<wizardpage pageid="confirm" description="Confirm start">
+		<description>
+			The key can be exported now, select 'Next' to start the process...
+		</description>
+	</wizardpage>
+
+	<wizardpage description="Working..." onpageshow="return exportStart();" onpagerewound="return false;" onpageadvanced="return false;">
+		<description>
+			Please wait while the key is been exported.
+		</description>
+		<spacer flex="1"/>
+		<progressmeter id="exportPercent" value="0"/>
+		<textbox id="exportStatus" multiline ="false" readonly="true" value="..." />
+	</wizardpage>
+	
+	<wizardpage pageid="ready" description="Key has been exported" onpagerewound="return false;">
+		<description>
+			Export finished.
+		</description>
+		<description>
+			At the target location 2 files have been created, [key-id].key and [key-id].pad. Please give those files to your communication partner together with the temporary password.
+		</description>
+	</wizardpage>
+
+</wizard>

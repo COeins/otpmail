@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<wizard id="otpImport" title="Import key wizard" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="importInitialize();" onwizardcancel="importCancel();">
+
+	<script type="application/x-javascript" src="chrome://otpmail/content/importwizard.js"/>
+
+	<wizardpage description="">
+		<description>
+			This wizard will help you import an One Time Pad key. Select 'Next' to start...
+		</description>
+	</wizardpage>
+
+	<wizardpage pageid="start" description="Select File" onpageadvanced="return importVerifyFile();">
+		<description>
+			You should have recieved two files, [key-id].key and [key-id].pad together with a temporary password. Please put them together in one directory (if they not already are) and choose the key file to import.
+		</description>
+		<hbox>
+			<textbox id="importFile" readonly="true" style="width:250px"/>
+			<button label="Browse..." oncommand="importSelectFile();"/>
+		</hbox>
+		<label>Key import passphrase:</label>
+		<textbox id="importPassword" type="password" value="" />
+	</wizardpage>
+
+	<wizardpage description="Select Alias">
+		<description>
+			Please enter an alias for this OTP key. Select something that makes it easy to identify this key later, like the name of the person you want to use it with.
+		</description>
+		<textbox id="importAlias" />
+	</wizardpage>
+
+	<wizardpage description="Select Keyring" onpageadvanced="return importVerifyPwd();">
+		<description>
+			Please select the key ring you want this key to be added to. All keys in a key ring share a passphrase for simplified access.
+		</description>
+
+		<listbox id="importSelectRing" rows="5">
+			<listhead>
+				<listheader label="Key ring id"/>
+			</listhead>
+		</listbox>
+
+		<label>Key ring passphrase:</label>
+		<textbox id="importRingPwd" type="password" value="" />
+	</wizardpage>
+
+	<wizardpage pageid="confirm" description="Confirm start">
+		<description>
+			The key can be imported now, select 'Next' to start the process...
+		</description>
+	</wizardpage>
+
+	<wizardpage description="Working..." onpageshow="return importStart();" onpagerewound="return false;" onpageadvanced="return false;">
+		<description>
+			Please wait while the key is been imported.
+		</description>
+		<spacer flex="1"/>
+		<progressmeter id="importPercent" value="0"/>
+		<textbox id="importStatus" multiline ="false" readonly="true" value="..." />
+	</wizardpage>
+	
+	<wizardpage pageid="ready" description="Key has been imported" onpagerewound="return false;">
+		<description>
+			Import finished.
+		</description>
+		<textbox id="importOutput" multiline="true" readonly="true" value="..." wrap="off" flex="2" />
+	</wizardpage>
+
+</wizard>

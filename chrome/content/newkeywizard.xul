@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<wizard id="otpCreate" title="OTP key creation wizard"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="newkeyInitialize();" onwizardcancel="newkeyCancel();">
+
+	<script type="application/x-javascript" src="chrome://otpmail/content/newkeywizard.js"/>
+
+	<wizardpage description="">
+		<description>
+			This wizard will help you create a new One Time Pad key. Select 'Next' to start...
+		</description>
+	</wizardpage>
+
+	<wizardpage pageid="start" description="Select Size" onpageadvanced="return newKeyVerifySize();">
+		<description>
+			Please enter how large you want this OTP to be.
+		</description>
+		<hbox>
+			<textbox id="newkeySize" type="number" value="1" />
+			<menulist id="newkeySizeUnit">
+				<menupopup>
+					<!--<menuitem label="kByte" value="k"/>-->
+					<menuitem label="MByte" value="m"/>
+					<menuitem label="GByte" value="g"/>
+				</menupopup>
+			</menulist>
+		</hbox>
+	</wizardpage>
+
+	<wizardpage description="Select Alias">
+		<description>
+			Please enter an alias for this OTP key. Select something that makes it easy to identify this key later, like the name of the person you want to use it with.
+		</description>
+		<textbox id="newkeyAlias" />
+	</wizardpage>
+
+	<wizardpage description="Select Keyring" onpageadvanced="return newKeyVerifyPwd();">
+		<description>
+			Please select the key ring you want this key to be added to. All keys in a key ring share a passphrase for simplified access.
+		</description>
+
+		<listbox id="newkeySelectRing" rows="5">
+			<listhead>
+				<listheader label="Key ring id"/>
+			</listhead>
+		</listbox>
+
+		<label>Key ring passphrase:</label>
+		<textbox id="newkeyPwd" type="password" value="" />
+	</wizardpage>
+
+	<wizardpage pageid="confirm" description="Confirm start">
+		<description>
+			The key can be created now, select 'Next' to start the process...
+		</description>
+		<description>
+			Creating an OTP key might take a while. Please continue to work during that time, to allow collecting some entropy.<!-- If an 'Unresponsive script' warning appears, please select 'Continue'. -->
+		</description>
+	</wizardpage>
+
+	<wizardpage description="Working..." onpageshow="return newkeyStart();" onpagerewound="return false;" onpageadvanced="return false;">
+		<description>
+			Please wait while the key is been created.
+		</description>
+		<description>
+			Creating an OTP key might take a while. Please continue to work during that time, to allow collecting some entropy.<!-- If an 'Unresponsive script' warning appears, please select 'Continue'. -->
+		</description>
+		<spacer flex="1"/>
+		<progressmeter id="newkeyPercent" value="0"/>
+		<textbox id="newkeyStatus" multiline ="false"  readonly="true" value="..." />
+	</wizardpage>
+	
+	<wizardpage pageid="ready" description="Key has been created" onpagerewound="return false;">
+		<description>
+			Creation finished.
+		</description>
+		<textbox id="newkeyOutput" multiline="true" readonly="true" value="..." wrap="off" flex="2" />
+	</wizardpage>
+
+</wizard>

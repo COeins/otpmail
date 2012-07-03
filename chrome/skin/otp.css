@@ -1,0 +1,58 @@
+ 
+toolbar[iconsize="small"] #otpConfigButton
+{
+  list-style-image: url("chrome://otpmail/skin/otp_blue_16.png");
+}
+#otpConfigButton
+{
+  list-style-image: url("chrome://otpmail/skin/otp_blue_24.png");
+}
+
+
+toolbar[iconsize="small"] #otpEncryptButton
+{
+  list-style-image: url("chrome://otpmail/skin/otp_16.png");
+}
+#otpEncryptButton
+{
+  list-style-image: url("chrome://otpmail/skin/otp_24.png");
+}
+
+
+toolbar[iconsize="small"] #otpDecryptButton
+{
+  list-style-image: url("chrome://otpmail/skin/otp_green_16.png");
+}
+#otpDecryptButton
+{
+  list-style-image: url("chrome://otpmail/skin/otp_green_24.png");
+}
+
+
+toolbar[iconsize="small"] #otpStatusButton
+{
+  list-style-image: url("chrome://otpmail/skin/otp_yellow_16.png");
+}
+#otpStatusButton
+{
+  list-style-image: url("chrome://otpmail/skin/otp_yellow_24.png");
+}
+
+#otpEncryptStatus
+{
+	list-style-image: url("chrome://otpmail/skin/otp_gray_16.png");
+	visibility: visible;
+}
+
+#otpComposeStatus[encrypt="active"] #otpEncryptStatus
+{
+	list-style-image: url("chrome://otpmail/skin/otp_yellow_16.png");
+	visibility: visible;
+}
+/*
+#otp-compose-status[encrypt="inactive"] #otp-encrypt-status 
+{
+	list-style-image: url("chrome://otpmail/skin/otp_gray_16.png");
+	visibility: visible;
+}
+*/
