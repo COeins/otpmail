@@ -1,64 +1,69 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>OTPmail by COeins</title>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<title>OTPmail by COeins</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">OTPmail</h1>
-        <p class="header">One Time Pad based mail encryption for Thunderbird</p>
+		<link rel="stylesheet" href="stylesheets/styles.css">
+		<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+		<script src="javascripts/scale.fix.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<h1 class="header">OTPmail</h1>
+				<p class="header">Download latest version:</p>
+				<ul>
+					<li class="download"><a class="buttons" href="downloads/otpmail_0.5.1.xpi">0.5.1</a></li>
+				</ul>
+				<p class="header">Download source as:</p>
+				<ul>
+					<li class="download"><a class="buttons" href="https://github.com/COeins/otpmail/zipball/master">ZIP</a></li>
+					<li class="download"><a class="buttons" href="https://github.com/COeins/otpmail/tarball/master">TAR</a></li>
+					<li><a class="buttons github" href="https://github.com/COeins/otpmail">View On GitHub</a></li>
+				</ul>
+				<p style="font-size: .8em; line-height: 1em" class="header">This project is maintained by <a class="header name" href="https://github.com/COeins">COeins</a></p>
+			</header>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/COeins/otpmail/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/COeins/otpmail/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/COeins/otpmail">View On GitHub</a></li>
-        </ul>
+			<section>
+				<h1>OTPmail</h1>
+					<p><em>One Time Pad based mail encryption for Thunderbird</em></p>
+				<h2>About</h2>
+					<p>The goal of OTPmail is providing a simple user interface for mail encryption via the One Time Pad. The encryption itself is not done by the extension but, similar to the widely known combination GnuPG/Enigmail, handled by an external module. The project is currently in an early beta phase. Feel free to install and test it, but don't rely on it in productive scenarios.</p>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/COeins">COeins</a></p>
+				<h2>Installation</h2>
+					<p>To install and use OTPmail, you will need:</p>
+					<ul>
+						<li><a href="http://www.mozilla.org/projects/thunderbird/">Mozilla Thunderbird</a> (versions 10 and up should work)</li>
+						<li><a href="http://java.com/getjava/">Java Runtime Environment</a>(versions 6 or up)</li>
+						<li><a href="http://coeins.github.com/otpjar/">otp.jar</a> encryption module (most recent version)</li>
+						<li><a href="downloads/otpmail_0.5.1.xpi" >OTPmail.xpi</a> (most recent version; select 'Save Link As' to download)</li>
+					</ul>
+					<p>To add the Extension to Thunderbird, select 'Add Add-On From File' from the add-on screen and choose the downloaded otpmail.xpi.</p>
 
+				<h2>Usage</h2>
+					<p>Once Thundrbird is restarted, the OTPmail settings window is displayed, where the following paths have to be configured: the location of the otp.jar module, an empty directory to store the key files in, and the location of java (in Windows, this should be something like 'C:\Program Files\Java\bin\java.exe', in Linux '/usr/bin/java').</p>
+					<img src="images/shot_setup.png" alt="Setup Window Screenshot" />
+					<p>To establish an encrypted communication with a partner a key has to be generated and shared. This can be done via the OTPmail menu: create a new key, then export it to an mobile storage device and import it on the target pc.</p>
+					<img src="images/shot_create.png" alt="Key Creation Screenshot" />
+					<p>After exchanging a key mails can be encrypted by selecting "Encrypt mail" from the OTPmail menu and toolbar button or by clicking the OTPmail status symbol. Caution: the current version does not yet support encrypting attachments. </p>
+					<img src="images/shot_mail.png" alt="Sending Mail Screenshot" />
 
-      </header>
-      <section>
-        <h1>OTPmail</h1>
+				<h2>Licence</h2>
+					<p>OTPmail can be used or modified under the terms of the <a href="http://mozilla.org/MPL/2.0/">Mozilla Public License, v. 2.0</a>.</p>
+					<p>Parts of the code are based on <a href="http://enigmail.mozdev.org/home/index.php.html">Enigmail</a> by Patrick Brunschwig and R. Saravanan, which is released under <a href="http://www.mozilla.org/MPL/MPL-1.1.html">Mozilla Public License, version 1.1</a> or the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License (GPL), version 2.0</a> or later.</p>
+					<p>The included module <a href="https://github.com/bit/subprocess">subprocess.jsm</a> by Patrick Brunschwig is released under <a href="http://www.mozilla.org/MPL/MPL-1.1.html">Mozilla Public License, version 1.1</a> or the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License (GPL), version 2.0</a> or later or the <a href="http://www.gnu.org/licenses/lgpl-2.1">GNU Lesser General Public License Version 2.1</a> or later.</p>
+			</section>
+			<footer>
+				<p style="font-size: .8em; line-height: 1em">Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</p>
+			</footer>
+		</div>
+		<!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
 
-<p><em>One Time Pad encryption for Thunderbird</em></p>
-
-<p>*</p>
-
-<p>***</p>
-
-<p>*</p>
-
-<p>*</p>
-
-<p>*</p>
-
-<p>*</p>
-
-<p>*</p>
-
-<p>*</p>
-
-<p>*</p>
-
-<p>(Sorry, there is nothing here yet. More information comming soon...)</p>
-      </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
-		
-  </body>
+	</body>
 </html>
