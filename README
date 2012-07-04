@@ -2,4 +2,14 @@ OTPmail
 
 One Time Pad encryption for Thunderbird
 
-(more information comming soon)
+The goal of OTPmail is providing a simple user interface for mail encryption via the One Time Pad. The encryption itself is not done by the extension but handled by an external module (http://coeins.github.com/otpjar/). The project is currently in an early beta phase. Feel free to install and test it, but don't rely on it in productive scenarios.
+
+For installation and usage instructions, see http://coeins.github.com/otpmail/
+
+Licence
+
+OTPmail can be used or modified under the terms of the Mozilla Public License, v. 2.0.
+
+Parts of the code are based on Enigmail by Patrick Brunschwig and R. Saravanan, which is released under Mozilla Public License, version 1.1 or the GNU General Public License (GPL), version 2.0 or later.
+
+The included module subprocess.jsm by Patrick Brunschwig is released under Mozilla Public License, version 1.1 or the GNU General Public License (GPL), version 2.0 or later or the GNU Lesser General Public License Version 2.1 or later.
