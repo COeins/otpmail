@@ -288,16 +288,20 @@ header li:hover {
 }
 
 a.buttons {
+	display:block;
 	-webkit-font-smoothing: antialiased;
-	background: url(../images/arrow-down.png) no-repeat;
+	margin: -5px 0 0 -6px;
+	background: url(../images/arrow-down.png) no-repeat 7px 2px;
 	font-weight: normal;
 	text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
-	padding: 2px 2px 2px 22px;
-	height: 30px;
+	padding: 6px 2px 2px 27px;
+	height: 18px;
+	width:120px;
+	xx-border: 1px solid white;
 }
 
 a.github {
-	background: url(../images/octocat-small.png) no-repeat 1px;
+	background: url(../images/octocat-small.png) no-repeat  6px 3px;
 }
 
 a.buttons:hover {
@@ -357,7 +361,7 @@ footer {
     display:inline;
   }
 
-  header ul {
+  header .source {
     position:absolute;
     right:130px;
     top:84px;
@@ -383,14 +387,14 @@ footer {
 		margin: 0 0 0 30px;
 	}
 
-  header ul, header p.view {
+  header .source, header p.view {
     position:static;
   }
 }
 
 @media print, screen and (max-width: 480px) {
 
-  header ul li.download {
+  header .source, header .release {
     display:none;
   }
 
